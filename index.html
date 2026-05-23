@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lunch des Roy</title>
+  <style>
+    :root{
+      --ink:#071846; --line:#f1dec8; --dash:#d7ccc4; --bg:#fffdf7;
+      --blue:#e7f4ff; --green:#e5faec; --yellow:#fff6c9; --orange:#ffe8d1; --pink:#ffe5ee; --purple:#f0e3ff;
+    }
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#fffef9,#fffaf1);font-family:ui-rounded,"Avenir Next",system-ui,-apple-system,Segoe UI,sans-serif;color:var(--ink)}
+    .app{max-width:1320px;margin:0 auto;padding:18px 16px 28px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.gear,.print{border:2px solid #eadffd;background:white;border-radius:16px;box-shadow:0 4px 14px #00000010;height:54px}.gear{width:58px;font-size:26px}.print{padding:0 22px;font-weight:900;font-size:18px;color:var(--ink)}h1{font-size:clamp(38px,6vw,58px);line-height:1;margin:0;text-align:center;font-weight:950;letter-spacing:.5px}.crown{font-size:.8em;margin-right:14px}.subtitle{text-align:center;margin:6px 0 18px;color:#64708a;font-weight:700}.planner{display:grid;grid-template-columns:150px repeat(5,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden;background:white;box-shadow:0 6px 20px #00000009}.cell,.head,.kid{border-left:1px solid var(--line);border-top:1px solid var(--line)}.blank{border-top:0;border-left:0;background:transparent}.head{border-top:0;min-height:60px;display:flex;align-items:center;justify-content:center;font-weight:950;font-size:24px}.head:nth-child(2){background:var(--blue)}.head:nth-child(3){background:var(--green)}.head:nth-child(4){background:var(--yellow)}.head:nth-child(5){background:var(--orange)}.head:nth-child(6){background:var(--pink)}.kid{border-left:0;min-height:205px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:#fff}.kid img{width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 5px 16px #00000018}.kid .name{font-size:26px;font-weight:950}.kid .stars{font-weight:950;color:#0d1b4b;background:#fff9cf;border-radius:14px;padding:4px 10px}.cell{min-height:205px;padding:16px;display:flex;align-items:center;justify-content:center;background:#fff}.drop{width:100%;height:100%;min-height:165px;border:2px dashed var(--dash);border-radius:18px;display:flex;align-items:center;justify-content:center;background:#fff;transition:.15s}.drop.active{border-color:#8b5cf6;background:#faf5ff;transform:scale(1.01)}.drop .plus{font-size:54px;color:#ccc}.planned{width:100%;max-width:170px;border-radius:14px;padding:10px 8px 12px;text-align:center;box-shadow:0 7px 18px #00000012;font-weight:950;position:relative}.planned img{width:112px;height:92px;object-fit:contain;display:block;margin:0 auto 4px}.planned .remove{position:absolute;top:5px;right:6px;border:0;background:#ffffffd9;border-radius:50%;width:28px;height:28px;font-size:16px;font-weight:900}.planned.custom{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:130px}.planned.custom .icon{font-size:58px}.section-title{display:flex;align-items:center;justify-content:center;gap:16px;margin:20px 0 12px;font-size:30px;font-weight:950}.decor{color:#8b5cf6;font-size:34px}.meals{display:grid;grid-template-columns:repeat(12,minmax(92px,1fr));gap:10px;padding:10px;border:1px solid var(--line);border-radius:16px;background:white;box-shadow:0 5px 18px #0000000b}.meal{border:0;border-radius:12px;min-height:174px;padding:8px 6px 10px;text-align:center;font:inherit;color:var(--ink);font-weight:950;box-shadow:0 4px 11px #0000000d;cursor:grab;user-select:none;touch-action:none;transition:.12s}.meal:active{cursor:grabbing;transform:scale(.98)}.meal.selected{outline:4px solid #8b5cf6;transform:translateY(-3px)}.meal img{width:100%;height:96px;object-fit:contain;display:block;margin:0 auto 3px}.meal .emoji{height:96px;display:flex;align-items:center;justify-content:center;font-size:68px}.hint{margin-top:14px;text-align:center;color:#69738a;font-weight:800;font-size:20px}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:#0d1b4b;color:white;padding:12px 18px;border-radius:999px;font-weight:900;box-shadow:0 12px 24px #0004;display:none;z-index:50}.toast.show{display:block}.drag-ghost{position:fixed;z-index:9999;pointer-events:none;opacity:.9;transform:translate(-50%,-50%) scale(.9);width:130px}.bg-orange{background:#ffe3bd}.bg-green{background:#dff9e8}.bg-yellow{background:#fff3a8}.bg-pink{background:#ffdce7}.bg-blue{background:#dff0ff}.bg-purple{background:#eadcff}.bg-mint{background:#d9f8f3}
+    @media (max-width:1100px){.planner{grid-template-columns:112px repeat(5,1fr)}.kid{min-height:160px}.kid img{width:72px;height:72px}.kid .name{font-size:21px}.cell{min-height:160px;padding:8px}.drop{min-height:130px}.planned img{width:88px;height:68px}.meals{grid-template-columns:repeat(6,1fr)}.meal{min-height:146px}.meal img,.meal .emoji{height:78px}}
+    @media (max-width:720px){.app{padding:10px 8px}.planner{grid-template-columns:84px repeat(5,132px);overflow:auto}.head{font-size:16px;min-height:46px}.kid{min-height:136px}.cell{min-height:136px}.kid img{width:58px;height:58px}.kid .name{font-size:18px}.kid .stars{font-size:12px}.drop{min-height:112px}.planned{font-size:13px}.planned img{width:78px;height:58px}.meals{display:flex;overflow-x:auto}.meal{min-width:118px}h1{font-size:34px}.print{font-size:15px;padding:0 14px}.gear{width:48px}}
+    @media print{body{background:white}.app{max-width:none;padding:8px}.gear,.print,.section-title,.meals,.hint,.toast{display:none!important}.subtitle{margin-bottom:10px}.planner{box-shadow:none}.cell,.kid{min-height:145px}.drop{border:0;min-height:120px}.planned{box-shadow:none;max-width:140px}.planned img{height:76px}.planned .remove{display:none}.kid img{width:72px;height:72px}h1{font-size:38px}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <div class="top"><button class="gear" title="Réglages">⚙️</button><h1><span class="crown">👑</span>Lunch des Roy</h1><button class="print" onclick="window.print()">🖨️ Imprimer</button></div>
+    <div class="subtitle">Menu des lunchs — lundi à vendredi</div>
+    <section class="planner" id="planner"></section>
+    <div class="section-title"><span class="decor">⌁</span>Repas disponibles<span class="decor">⌁</span></div>
+    <section class="meals" id="meals"></section>
+    <div class="hint">☝️ Glissez un repas dans une case ou touchez un repas puis une case</div>
+  </main>
+  <div id="toast" class="toast"></div>
+  <script>
+    const DAYS=["LUNDI","MARDI","MERCREDI","JEUDI","VENDREDI"];
+    const KIDS=[{id:"leon",name:"Léon",img:"/images/leon.png"},{id:"jules",name:"Jules",img:"/images/jules.png"}];
+    const MEALS=[
+      {id:"spaghetti",name:"Spaghetti",img:"/images/spaghetti.png",bg:"bg-orange"},
+      {id:"wrap-poulet",name:"Wrap au poulet",img:"/images/wrap-poulet.png",bg:"bg-green"},
+      {id:"wrap-pulled-porc",name:"Wrap au pulled porc",img:"/images/wrap-pulled-porc.png",bg:"bg-yellow"},
+      {id:"wrap-sandwich-jambon",name:"Wrap/Sandwich au jambon",img:"/images/sandwich-jambon.png",bg:"bg-pink"},
+      {id:"sandwich-oeufs",name:"Sandwich aux oeufs",img:"/images/sandwich-oeufs.png",bg:"bg-blue"},
+      {id:"pate-chinois",name:"Pâté chinois",img:"/images/pate-chinois.png",bg:"bg-purple"},
+      {id:"pizza",name:"Pizza",img:"/images/pizza.png",bg:"bg-pink"},
+      {id:"lasagne",name:"Lasagne",img:"/images/lasagne.png",bg:"bg-mint"},
+      {id:"macaroni-viande",name:"Macaroni à la viande",img:"/images/macaroni-viande.png",bg:"bg-pink"},
+      {id:"spaghetti-crevettes",name:"Spaghetti crevettes",img:"/images/spaghetti-crevettes.png",bg:"bg-orange"},
+      {id:"saucisse-riz",name:"Saucisse et riz",img:"/images/saucisse-riz.png",bg:"bg-yellow"},
+      {id:"traiteur",name:"Traiteur",emoji:"⭐",bg:"bg-pink",caterer:true},
+      {id:"custom",name:"Autre repas",emoji:"🍽️",bg:"bg-pink",custom:true}
+    ];
+    const mealById=Object.fromEntries(MEALS.map(m=>[m.id,m]));
+    let menu=JSON.parse(localStorage.getItem("lunch-des-roy-static-v1")||"{}");
+    let selected=null; let dragging=null; let ghost=null;
+    const save=()=>localStorage.setItem("lunch-des-roy-static-v1",JSON.stringify(menu));
+    const key=(kid,day)=>kid+"-"+day;
+    function catererCount(kid){return DAYS.reduce((n,d)=>n+((menu[key(kid,d)]?.id)==="traiteur"?1:0),0)}
+    function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1600)}
+    function render(){renderPlanner();renderMeals();}
+    function renderPlanner(){
+      const root=document.getElementById("planner"); root.innerHTML='<div class="blank"></div>'+DAYS.map(d=>`<div class="head">${d}</div>`).join('');
+      KIDS.forEach(k=>{ root.insertAdjacentHTML('beforeend',`<div class="kid"><img src="${k.img}"><div class="name">${k.name}</div><div class="stars">${catererCount(k.id)}/2 ⭐</div></div>`);
+        DAYS.forEach(d=>{const item=menu[key(k.id,d)]; const div=document.createElement('div'); div.className='cell'; div.dataset.kid=k.id; div.dataset.day=d;
+          div.innerHTML=`<div class="drop">${item?plannedHtml(item):'<span class="plus">＋</span>'}</div>`;
+          div.addEventListener('dragover',e=>{e.preventDefault();div.querySelector('.drop').classList.add('active')});
+          div.addEventListener('dragleave',()=>div.querySelector('.drop').classList.remove('active'));
+          div.addEventListener('drop',e=>{e.preventDefault();div.querySelector('.drop').classList.remove('active');place(k.id,d,e.dataTransfer.getData('text/plain'))});
+          div.addEventListener('click',e=>{ if(e.target.classList.contains('remove')){delete menu[key(k.id,d)];save();render();return} if(selected) place(k.id,d,selected); });
+          root.appendChild(div);
+        })
+      });
+    }
+    function plannedHtml(item){
+      if(item.customText) return `<div class="planned custom bg-pink"><button class="remove">×</button><div class="icon">🍽️</div><div>${escapeHtml(item.customText)}</div></div>`;
+      const m=mealById[item.id]||item; const content=m.img?`<img src="${m.img}">`:`<div class="emoji">${m.emoji||'🍽️'}</div>`;
+      return `<div class="planned ${m.bg||'bg-pink'}"><button class="remove">×</button>${content}<div>${m.name}</div></div>`;
+    }
+    function renderMeals(){
+      const root=document.getElementById('meals'); root.innerHTML='';
+      MEALS.forEach(m=>{const b=document.createElement('button'); b.className=`meal ${m.bg} ${selected===m.id?'selected':''}`; b.draggable=true; b.dataset.id=m.id;
+        b.innerHTML=(m.img?`<img src="${m.img}">`:`<div class="emoji">${m.emoji}</div>`)+`<div>${m.name}</div>`;
+        b.addEventListener('dragstart',e=>{e.dataTransfer.setData('text/plain',m.id)});
+        b.addEventListener('click',()=>{selected=selected===m.id?null:m.id;renderMeals();toast(selected?`${m.name} sélectionné`:"Sélection annulée")});
+        b.addEventListener('pointerdown',startPointerDrag);
+        root.appendChild(b);
+      })
+    }
+    function startPointerDrag(e){
+      if(e.pointerType==='mouse') return; const id=e.currentTarget.dataset.id; dragging=id; selected=null;
+      ghost=e.currentTarget.cloneNode(true); ghost.className=e.currentTarget.className+' drag-ghost'; document.body.appendChild(ghost); moveGhost(e);
+      window.addEventListener('pointermove',moveGhost); window.addEventListener('pointerup',endPointerDrag,{once:true});
+    }
+    function moveGhost(e){ if(ghost){ghost.style.left=e.clientX+'px';ghost.style.top=e.clientY+'px'} }
+    function endPointerDrag(e){ window.removeEventListener('pointermove',moveGhost); if(ghost) ghost.remove(); ghost=null; const el=document.elementFromPoint(e.clientX,e.clientY)?.closest('.cell'); if(el&&dragging) place(el.dataset.kid,el.dataset.day,dragging); dragging=null; }
+    function place(kid,day,id){
+      if(!id) return; const m=mealById[id]; if(!m) return;
+      if(m.caterer && menu[key(kid,day)]?.id!=="traiteur" && catererCount(kid)>=2){toast("Maximum 2 traiteurs par semaine");return;}
+      if(m.custom){const txt=prompt("Quel repas veux-tu inscrire?",""); if(!txt) return; menu[key(kid,day)]={id:"custom",customText:txt.trim().slice(0,28)};}
+      else menu[key(kid,day)]={id};
+      selected=null; save(); render(); toast("Repas ajouté ✅");
+    }
+    function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+    render();
+  </script>
+</body>
+</html>

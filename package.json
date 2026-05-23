@@ -1,0 +1,8 @@
+{
+  "name": "lunch-des-roy",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo 'Static app - no build needed'"
+  }
+}
